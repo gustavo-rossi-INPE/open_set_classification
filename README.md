@@ -163,7 +163,7 @@ If you use this code in your research, please cite the associated paper:
 @article{rossi2026_openset_trees,
   title   = {Tree species mapping in a dense Brazilian Cerrado formation based on UAV imagery and open-set deep learning models},
   author  = {Rossi, Gustavo Fiedler and others},
-  journal = {Journal Name},
+  journal = {Ecological Informatics},
   year    = {2026}
 }
 ```
