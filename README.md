@@ -21,20 +21,12 @@ This repository contains an integrated classification framework that performs tr
 
 
 
-## Study Scope
-
-The workflow was developed for tree species classification using UAV RGB imagery and manually delineated individual tree crowns from a tropical savanna / seasonal forest context in Brazil.
-
-
-
 ## Project Structure
 
 ```text
 ├── notebooks/
-│   ├── 01_prepare_data.ipynb
-│   ├── 02_train_closed_set_models.ipynb
-│   ├── 03_calibrate_open_set_methods.ipynb
-│   └── 04_large_scale_inference.ipynb
+│   ├── 01_patch_extraction.ipynb
+│   ├── 02_train_calibrate_eval_infer.ipynb
 ├── requirements.txt
 ├── README.md
 └── data/
@@ -49,6 +41,9 @@ The workflow was developed for tree species classification using UAV RGB imagery
 - CUDA-compatible GPU (optional but recommended)
 
 ### Setup
+#### Note
+This entire project was elaborated and executed in Google Colab environment, using the T4 GPU provided by the Colab Premium signature.
+If the desire is to run locally, follow the following steps:
 
 1. **Clone the repository**
 
@@ -72,6 +67,28 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+
+### Patch Extraction
+
+Patch extraction is performed from crown polygons and can be applied in two different contexts:
+
+1. **Training dataset generation**
+
+   Image patches are extracted from manually delineated individual tree crowns (ITCs).  
+   These crowns represent the reference dataset used to train the closed-set classifiers.
+
+2. **Inference dataset generation**
+
+   Image patches are extracted from automatically detected crowns obtained through the segmentation workflow described in Baudchon et al. (2026). For full details regarding crown automatic segmentation, please refer to the original publication.
+   These crowns are used to generate the patches classified during the large-scale inference stage.
+
+Baudchon, H., Ouaknine, A., Weiss, M., Teng, M., Walla, T. R., Caron-Guay, A., Pal, C., & Laliberté, E. (2026).  
+[SelvaBox: A high-resolution dataset for tropical tree crown detection](https://arxiv.org/abs/2507.00170)
+
+
+Although the extraction scripts are included in this repository, running them is **not required** to reproduce the experiments, since the training dataset is already provided in its final structure.
+
+
 
 The cropped image patches are provided already extracted and split into the required subsets. Therefore, this repository does **not** include the patch extraction stage as part of the main workflow.
 
@@ -108,25 +125,7 @@ This repository assumes that image patches are already extracted and organized i
 
 However, the code used for patch extraction is also provided for transparency and reproducibility (patch_extraction.ipynb).
 
-### Patch Extraction
 
-Patch extraction is performed from crown polygons and can be applied in two different contexts:
-
-1. **Training dataset generation**
-
-   Image patches are extracted from manually delineated individual tree crowns (ITCs).  
-   These crowns represent the reference dataset used to train the closed-set classifiers.
-
-2. **Inference dataset generation**
-
-   Image patches are extracted from automatically detected crowns obtained through the segmentation workflow described in Baudchon et al. (2026). For full details regarding crown automatic segmentation, please refer to the original publication.
-   These crowns are used to generate the patches classified during the large-scale inference stage.
-
-Baudchon, H., Ouaknine, A., Weiss, M., Teng, M., Walla, T. R., Caron-Guay, A., Pal, C., & Laliberté, E. (2026).  
-[SelvaBox: A high-resolution dataset for tropical tree crown detection](https://arxiv.org/abs/2507.00170)
-
-
-Although the extraction scripts are included in this repository, running them is **not required** to reproduce the experiments, since the training dataset is already provided in its final structure.
 
 ---
 
