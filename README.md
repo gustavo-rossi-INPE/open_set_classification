@@ -42,7 +42,7 @@ This repository contains an integrated classification framework that performs tr
 
 ### Setup
 #### Note
-This entire project was elaborated and executed in Google Colab environment, using the T4 GPU provided by the Colab Premium signature.
+This entire project was elaborated and executed in Google Colab environment, using the T4 GPU provided by the Google Colab Premium signature.
 If the desire is to run locally, follow the following steps:
 
 1. **Clone the repository**
@@ -81,18 +81,18 @@ Patch extraction is performed from crown polygons and can be applied in two diff
 
    Image patches are extracted from automatically detected crowns obtained through the segmentation workflow described in Baudchon et al. (2026). For full details regarding crown automatic segmentation, please refer to the original publication.
    These crowns are used to generate the patches classified during the large-scale inference stage.
-
+   
+```bibtex
 Baudchon, H., Ouaknine, A., Weiss, M., Teng, M., Walla, T. R., Caron-Guay, A., Pal, C., & Laliberté, E. (2026).  
 [SelvaBox: A high-resolution dataset for tropical tree crown detection](https://arxiv.org/abs/2507.00170)
-
+```
 
 Although the extraction scripts are included in this repository, running them is **not required** to reproduce the experiments, since the training dataset is already provided in its final structure.
 
 
-
-The cropped image patches are provided already extracted and split into the required subsets. Therefore, this repository does **not** include the patch extraction stage as part of the main workflow.
-
-The notebook covers the pipeline from model training to evaluation and inference.
+---
+### Main pipeline
+The notebook 02_train_calibrate_eval_infer.ipynb covers the pipeline from model training to evaluation and large-scale inference.
 
 Execute the notebook sections in the following order:
 
@@ -100,7 +100,7 @@ Execute the notebook sections in the following order:
    Verifies the organization of the pre-extracted patch dataset and counts the available samples per species and split.
 
 2. **Closed-set training**  
-   Trains the closed-set deep learning classifiers on the known species dataset.
+   Trains the closed-set deep learning classifiers on the known species dataset across 5 different seeds.
 
 3. **Closed-set evaluation**  
    Summarizes model performance and generates comparative plots across runs and architectures.
@@ -117,13 +117,6 @@ Execute the notebook sections in the following order:
 7. **Large-scale inference and shapefile export**  
    Applies the selected operational model to inference outputs and exports the final results as tabular and spatial files.
 
-### Notes
-
-## Data Preparation
-
-This repository assumes that image patches are already extracted and organized into training and inference datasets.
-
-However, the code used for patch extraction is also provided for transparency and reproducibility (patch_extraction.ipynb).
 
 
 
@@ -135,11 +128,11 @@ The full dataset used in this study is not entirely included in this repository 
 
 The repository contains the code required to reproduce the experiments described in the paper. Input data may include:
 
-- Orthomosaic for patch extraction
-- Cropped individual tree crown (ITC) image patches
-- Species labels
+- Orthomosaic for patch extraction-
+- Manually delimited crown shapefile for train/val patch extraction
+- Cropped individual tree crown (ITC) image patches, organized into labeled species folders.
 - Train / validation / test splits
-- Crown shapefiles used for spatial inference
+- Automatically delimited crown shapefile for large-scale inference.
 
 Additional information about dataset access and metadata will be provided separately.
 
