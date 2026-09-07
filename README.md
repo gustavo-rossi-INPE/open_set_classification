@@ -160,7 +160,7 @@ All experiments can be reproduced by running the notebooks in the order describe
 If you use this code in your research, please cite the associated paper:
 
 ```bibtex
-@article{rossi2026_openset_trees,
+@article{rossi2026_openset,
   title   = {Tree species mapping in a dense Brazilian Cerrado formation based on UAV imagery and open-set deep learning models},
   author  = {Rossi, Gustavo Fiedler and others},
   journal = {Ecological Informatics},
