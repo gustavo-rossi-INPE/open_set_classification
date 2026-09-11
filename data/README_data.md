@@ -10,6 +10,8 @@ Train / validation / test splits
 Automatically delimited crown shapefile for large-scale inference.
 Additional information about dataset access and metadata will be provided separately.
 
-The dataset is available at Zenodo: https://doi.org/10.5281/zenodo.22698834
+The dataset is available at Zenodo: https://zenodo.org/records/22698834
+
+
 
 
